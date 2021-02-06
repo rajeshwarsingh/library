@@ -1,33 +1,34 @@
+require('dotenv').config()
 var createError = require('http-errors');
 var express = require('express');
+var bodyParser = require('body-parser')
+var cors = require('cors')
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
+const config = require('./config')
+
 var libraryRouter = require('./routes/libraryRoute');
 const mongoose = require('mongoose');
 
 var app = express();
 
-// view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'jade');
 
- mongoose.connect('mongodb://localhost:27017/library', {
+mongoose.connect(config.mongoUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
   useCreateIndex: true
 });
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
-// app.use('/', indexRouter);
+app.use(logger('dev'));
+app.use(cookieParser());
+
 app.use('/', libraryRouter);
 
 // catch 404 and forward to error handler

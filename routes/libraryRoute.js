@@ -9,8 +9,10 @@ const {
   borrow,
   getIssues,
   returnBook,
-  students,
-  resetAppData
+  users,
+  getUsers,
+  resetAppData,
+  clearAppData
 } = libraryController
 
 
@@ -25,13 +27,17 @@ router.get('/getBooks/:id', getBooksById);
 
 router.post('/borrow', borrow);
 
-router.get('/getIssues/:sid', getIssues);
+router.get('/borrows/:sid', getIssues);
 
 router.post('/return', returnBook);
 
-router.get('/students/:id', students);
+router.get('/users/:id', users);
+
+router.get('/users', getUsers);
 
 router.get('/resetAppData', resetAppData);
+
+router.get('/clearAppData', clearAppData);
 
 router.get('*', function(req, res, next) {
   res.send('not found');

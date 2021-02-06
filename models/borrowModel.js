@@ -5,7 +5,7 @@ const ObjectId = Schema.ObjectId;
 
 const BorrowSchema = new Schema({
     bookId: ObjectId,
-  studentId:ObjectId,
+  userId:ObjectId,
   borrowId:ObjectId,
   borrowDate: { type: Date, default: Date.now },
 },{collection:'borrows'});
