@@ -4,6 +4,7 @@
 Library Management Project, User can view the books in library, borrow it and can return it.</br>
 /getBooks : API to get the all availabe books in the liberary.</br>
 /borrow : API Will add the book in borrowing list and reduce the copy from the library.</br>
+/borrows/:sid : API will get the all borrowed books.</br>
 /return : API will Remove the book from the Borrow List and Update the Library with copy of return book.</br>
 
 above 3 APIs used in our project. Rest of others created for futur use.</br>
