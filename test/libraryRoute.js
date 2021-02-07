@@ -145,4 +145,20 @@ describe('Books', async () => {
         });
 
     });
+    /*
+    * Test the /GET get borrow list
+    */
+    describe('/GET borrow list', () => {
+
+        it('it should GET all the borrowed books', (done) => {
+            chai.request(server)
+                .get(`/borrows/${userId}`)
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('array');
+                    done();
+                });
+        });
+
+    });
 });

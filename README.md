@@ -23,3 +23,23 @@ buy default application run on test mode. Set environment variable, NODE_ENV=pro
 Tests live at test/libraryRoute.js and are written in Mocha and chai.
 
  From the root dir of a project issue `npm run test`.
+ 
+ ### API
+ sid : userId
+ bid : bookId
+ * api fetch books </br>
+ curl --location --request GET 'http://localhost:3001/getBooks'
+
+ * api fetch borrow books of specified user </br>
+curl --location --request GET 'http://localhost:3001/borrows/userIDXXXXXXXXXX'
+
+
+ * api to borrow book </br>
+curl --location --request POST 'http://localhost:3001/borrow' \
+--header 'Content-Type: application/json' \
+--data-raw '{"uid":"userIDXXXXXXXXXX","bid":"bookIDXXXXXXXXXX"}
+
+ * api to return book </br>
+curl --location --request POST 'http://localhost:3001/return' \
+--header 'Content-Type: application/json' \
+--data-raw '{"uid":"userIDXXXXXXXXXX","bid":"bookIDXXXXXXXXXX"}
